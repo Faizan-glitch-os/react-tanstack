@@ -11,7 +11,7 @@ export default function FindEventSection() {
 
   const { data, isError, isPending, error } = useQuery({
     queryKey: ["events", { search: search }],
-    queryFn: () => fetchEvents(search),
+    queryFn: ({ signal }) => fetchEvents({ signal, search }),
   });
 
   function handleSubmit(event) {
